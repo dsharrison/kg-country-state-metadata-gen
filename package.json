@@ -2,6 +2,10 @@
   "name": "kg-country-state-metadata-gen",
   "version": "0.0.1",
   "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "body-parser": "^1.0.2",
     "error-handler": "^0.1.4",
