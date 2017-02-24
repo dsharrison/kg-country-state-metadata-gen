@@ -1,0 +1,79 @@
+div.slds-m-top--large
+
+  p.slds-m-bottom--large
+    | Select the countries to download as KGRenewal country and state metadata. All states will be included for countries you select.
+
+  .slds-p-bottom--medium.slds-m-bottom--medium
+    .slds-form-element
+      label.slds-form-element__label(for='search-input') Search
+      .slds-form-element__control
+        input#search-input.slds-input(type='text', placeholder='Country name', ng-model='query', ng-change='filter(query)')
+
+  table.slds-table.slds-table--bordered.slds-table--cell-buffer
+    thead
+      tr.slds-text-title--caps
+        th(scope='col',style='width:3.25rem')
+        th(scope='col')
+          | Country Name
+        th(scope='col')
+          | ISO Code
+        th(scope='col')
+          | Number of States/Provinces
+    tbody
+      tr(ng-class='{"slds-is-selected": country.selected}', ng-repeat='(code, country) in filteredEntries')
+        td.slds-text-align--right(role='gridcell',style='width:3.25rem')
+          span.slds-checkbox
+            input(id='select-country-{{code}}',type='checkbox',ng-model='country.selected', ng-change='updateSelection()')
+            label.slds-checkbox__label(for='select-country-{{code}}')
+              span.slds-checkbox--faux
+              span.slds-form-element__label.slds-assistive-text
+                | Select {{country.name}}
+        td(role='gridcell')
+          div.slds-truncate(title='{{country.name}}')
+            | {{country.name}}
+        td(role='gridcell')
+          div.slds-truncate(title='{{country.code}}')
+            | {{country.code}}
+        td(role='gridcell')
+          div.slds-truncate(title='{{country.states.length}}')
+            | {{country.states.length}}
+            a.slds-float--right(ng-show='country.states.length', data-aljs='modal', data-aljs-show='{{country.code}}-states') View
+
+            .slds-modal.slds-fade-in-open.slds-hide(id='{{country.code}}-states', aria-hidden='true', tabindex='-1', role='dialog', aria-labelledby='modal-heading-1')
+              .slds-modal__container
+                .slds-modal__header
+                  h2#modal-heading-1.slds-text-heading--medium {{country.name}} States
+                  button.slds-button.slds-button--icon-inverse.slds-modal__close(data-aljs-dismiss='modal')
+                    svg.slds-button__icon.slds-button__icon--large(aria-hidden='true')
+                      use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='/vendor/lightning-design-system/icons/action-sprite/svg/symbols.svg#close')
+                    span.slds-assistive-text Close
+                .slds-modal__content.slds-p-around--medium
+                  table.slds-table.slds-table--bordered.slds-table--cell-buffer
+                    thead
+                      tr.slds-text-title--caps
+                        th(scope='col')
+                          | State Name
+                        th(scope='col')
+                          | ISO Code
+                    tbody
+                      tr(ng-repeat='(code, state) in country.states')
+                        td(role='gridcell')
+                          div.slds-truncate(title='{{state.name}}')
+                            | {{state.name}}
+                        td(role='gridcell')
+                          div.slds-truncate(title='{{state.code}}')
+                            | {{state.code}}
+                .slds-modal__footer
+                  button.slds-button.slds-button--neutral(data-aljs-dismiss='modal') Dismiss
+
+
+.slds-docked-form-footer
+  button.slds-button.slds-button--brand(ng-click='download()', ng-disabled='selectedEntries.length == 0')
+    svg.slds-button__icon.slds-button__icon--left(aria-hidden='true')
+      use(xlink:href='/vendor/lightning-design-system/icons/utility-sprite/svg/symbols.svg#download')
+    | Download Metadata - {{selectedEntries.length}} Selected
+
+script.
+  $('body').modal({
+      selector: '[data-aljs="modal"]'
+  });
