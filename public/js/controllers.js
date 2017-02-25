@@ -101,7 +101,7 @@ angular.module('countryStateMetadataGenerator.controllers', []).
         // that we have unique file names and that states are easy to identify
         // without reading the XML.
         country.states.forEach(function(state){
-          customMetadataFolder.file(`KGRenewal__State.${state.code.replace('-', '_')}.md`, stateMetadataGenerator.do(state));
+          customMetadataFolder.file(`KGRenewal__State.${country.code}_${state.code}.md`, stateMetadataGenerator.do(state));
         });
       });
 
