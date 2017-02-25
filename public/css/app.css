@@ -1,4 +1,9 @@
 header {
-  background: #305942;
+  background: #34495e;
+  background-size: cover;
   color: #FFF;
+}
+
+header .slds-text-heading--large {
+  font-size: 3rem;
 }

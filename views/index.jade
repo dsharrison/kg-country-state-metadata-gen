@@ -4,10 +4,15 @@ block body
   div(ng-controller='MetadataBuilderCtrl')
 
     header.slds-p-horizontal--large.slds-p-vertical--xx-large
-      h1.slds-text-heading--large
-        | Generate State and Country Metadata
+      .slds-grid.slds-grid--vertical-align-center.slds-p-horizontal--large.slds-container--center.slds-grid--align-spread.slds-container--x-large
+        .slds-grid.slds-grid--vertical-align-center
+          .slds-p-right--medium
+            a(href='http://www.kineticgrowth.com', style='z-index: 6; position: relative;')
+              img(src='http://install.kineticgrowth.com/img/kg-logo-circle-color.png', alt='Kinetic Growth')
+          div
+            h1.slds-text-heading--large Generate State and Country Metadata
 
-    div.slds-p-around--large.slds-container--medium
+    div.slds-container--x-large.slds-container--center.slds-p-around--large
       div(ng-view)
 
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
