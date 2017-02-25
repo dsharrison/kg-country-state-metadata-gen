@@ -12,6 +12,7 @@ var express = require('express'),
   http = require('http'),
   path = require('path');
 
+// Declare all as express server
 var app = module.exports = express();
 
 /**
@@ -31,12 +32,12 @@ var env = process.env.NODE_ENV || 'development';
 
 // development only
 if (env === 'development') {
-
+  // Add any special logic for dev
 }
 
 // production only
 if (env === 'production') {
-
+  // Add any special logic for prod
 }
 
 
@@ -49,7 +50,7 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
-app.get('/api/iso_3166_2', api.iso_3166_2);
+app.get('/api/codes', api.codes);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

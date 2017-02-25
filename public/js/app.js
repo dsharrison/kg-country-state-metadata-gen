@@ -1,14 +1,16 @@
 'use strict';
 
-// Declare app level module which depends on filters, and services
+/**
+ * Initialize Angular.js application.
+ */
 
 angular.module('countryStateMetadataGenerator', [
   'countryStateMetadataGenerator.controllers',
-  'countryStateMetadataGenerator.filters',
   'countryStateMetadataGenerator.services',
-  'countryStateMetadataGenerator.directives'
 ]).
 config(function ($routeProvider, $locationProvider) {
+
+  // Configure the route to the build page
   $routeProvider.
     when('/build', {
       templateUrl: 'partials/build'
@@ -17,5 +19,6 @@ config(function ($routeProvider, $locationProvider) {
       redirectTo: '/build'
     });
 
+  // Set location to use HTML5 history
   $locationProvider.html5Mode(true);
 });

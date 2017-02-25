@@ -18,7 +18,7 @@ div.slds-m-top--large
         th(scope='col')
           | ISO Code
         th(scope='col')
-          | Number of States/Provinces
+          | Included States/Provinces
     tbody
       tr(ng-class='{"slds-is-selected": country.selected}', ng-repeat='(code, country) in filteredEntries')
         td.slds-text-align--right(role='gridcell',style='width:3.25rem')
@@ -42,7 +42,7 @@ div.slds-m-top--large
             .slds-modal.slds-fade-in-open.slds-hide(id='{{country.code}}-states', aria-hidden='true', tabindex='-1', role='dialog', aria-labelledby='modal-heading-1')
               .slds-modal__container
                 .slds-modal__header
-                  h2#modal-heading-1.slds-text-heading--medium {{country.name}} States
+                  h2#modal-heading-1.slds-text-heading--medium {{country.name}} - Included States
                   button.slds-button.slds-button--icon-inverse.slds-modal__close(data-aljs-dismiss='modal')
                     svg.slds-button__icon.slds-button__icon--large(aria-hidden='true')
                       use(xmlns:xlink='http://www.w3.org/1999/xlink', xlink:href='/vendor/lightning-design-system/icons/action-sprite/svg/symbols.svg#close')
