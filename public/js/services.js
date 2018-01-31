@@ -58,18 +58,18 @@ angular.module('countryStateMetadataGenerator.services', []).
      * @param  {Object} state The state entry to convert.
      * @return {String} KGRenewal__State__mdt data for the state.
      */
-    gen.do = function(state) {
+    gen.do = function(country, state) {
       return `<?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <label>${state.name}</label>
     <protected>false</protected>
     <values>
         <field>KGRenewal__Country__c</field>
-        <value xsi:type="xsd:string">${state.parent}</value>
+        <value xsi:type="xsd:string">${country.code}</value>
     </values>
     <values>
         <field>KGRenewal__IsoCode__c</field>
-        <value xsi:type="xsd:string">${state.code.replace(state.parent + '-', '')}</value>
+        <value xsi:type="xsd:string">${state.code}</value>
     </values>
 </CustomMetadata>`;
     };
