@@ -1,4 +1,4 @@
-# kg-country-state-metadata-generator
+# country-state-metadata-generator
 The county and state metadata generator allows administrators or developers to quickly load metadata for the countries and states they wish to support into their implementation of the [Kinetic Growth](https://www.kineticgrowth.com) application.
 
 ## Usage
